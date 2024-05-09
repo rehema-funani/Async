@@ -1,16 +1,16 @@
 function greet(subject,callback){
-    console.log(`I love ${subject}`);
+    
     callback();
 
 };
 function intro(){
     console.log('I love javascript');
 }
-greet('python',intro);
+greet('javascript',intro);
 
 
 
-setTimeout(intro,8000);
+setTimeout(intro,1000);
 
 
 
@@ -54,33 +54,26 @@ setTimeout(intro,8000);
 
 // const peopleId = ["1222","3244255","56432"]
 // getId(peopleId).then(message=>{console.log(message)})
-function fetchData(id) {
-    return fetch(id)
-      .then(response => {
-        if (!response.id) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      });
+
+
+const users = [1, 2, 3, 4, 5];
+async function getUserid(iD) {
+  for (let id of users) {
+    if(iD==id)
+    try {
+      const userData = await userData(id);
+      console.log(userData);
+    } catch {
+      console.log(iD);
+    }
   }
+}
+getUserid(1);
+
   
-  function fetchMultipleAPIs(id) {
-    const promises = id.map(id => fetchData(id));
-    return Promise.all(promises);
-  }
   
-  // Example usage:
-  const id = [
-    1,2,3,4,5
-  ];
   
-  fetchMultipleAPIs(id)
-    .then(results => {
-      console.log('Combined Results:', results);
-    })
-    .catch(error => {
-      console.log('Error:', error.message);
-    });
+ 
   
 
 
@@ -94,7 +87,7 @@ const ourPromise = new Promise((resolve,reject)=>{
     }
 })
 ourPromise.then(()=>{
-    console.log("i will be confirmed");
+    console.log("task will be completed");
 }).catch(()=>console.log("task succesfully completed"))
 .finally(()=>{
     console.log("error");
@@ -102,15 +95,10 @@ ourPromise.then(()=>{
 console.log({ourPromise});
 
 
-function unstableTask(taskName,failureProbability){
-  if(failureProbability>=10||failureProbability>=0){
-      
-  }
-
-}
 
 
-const successWish = async (number,taskName)=>{
+
+const unstableTask= async (number,taskName)=>{
   if(number>0||number<10){
   await ourPromise;
   console.log("error");
@@ -123,7 +111,7 @@ catch{
 }
 }
 }
-successWish(2,"guessNumber")
+unstableTask(2,"guessNumber")
 
 
 const executeWithRetry = async (taskName,retries,failureProbability)=>{
